@@ -43,47 +43,6 @@ client.on('message', async msg =>{
     msg.channel.send(embed);
     }
 });
-/////////////////////////
-////////////////////////
-//////////////////////
-client.on('message', async msg =>{
-	if (msg.author.bot) return undefined;
-    if (!msg.content.startsWith(prefix)) return undefined;
-    
-    let args = msg.content.split(' ');
-
-	let command = msg.content.toLowerCase().split(" ")[0];
-	command = command.slice(prefix.length)
-
-    if(command === `avatar`){
-	if(msg.channel.type === 'dm') return msg.channel.send("Nope Nope!! u can't use avatar command in DMs (:")
-        let mentions = msg.mentions.members.first()
-        if(!mentions) {
-          let sicon = msg.author.avatarURL
-          let embed = new Discord.RichEmbed()
-          .setImage(msg.author.avatarURL)
-          .setColor("#5074b3")
-          msg.channel.send({embed})
-        } else {
-          let sicon = mentions.user.avatarURL
-          let embed = new Discord.RichEmbed()
-          .setColor("#5074b3")
-          .setImage(sicon)
-          msg.channel.send({embed})
-        }
-    };
-});
-/////////////////////////
-////////////////////////
-//////////////////////
-/////////////////////////
-////////////////////////
-//////////////////////
-
-/////////////////////////
-////////////////////////
-//////////////////////
-/////////////////////////
 ////////////////////////
 //////////////////////
 client.on('message', async msg => { 
@@ -342,4 +301,22 @@ client.on('message', message => {
     }
 });
 
-client.login(process.env.BOT_TOKEN);
+let tokens = process.argv.slice(2)
+
+if(!tokens[0]) {
+  console.log("Supply a number of token")
+  process.exit(0)
+}
+
+let token;
+
+
+if(tokens[0] === "1") {
+  token = "process.env.BOT_TOKENN"
+} else if(tokens[0] === "2") {
+  token = "process.env.BOT_TOKEN" 
+} /* else  if(tokens[0] === "3") {
+  token = "token"
+}
+*/
+client.login(token);
