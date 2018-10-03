@@ -301,22 +301,5 @@ client.on('message', message => {
     }
 });
 
-let tokens = process.argv.slice(2)
 
-if(!tokens[0]) {
-  console.log("Supply a number of token")
-  process.exit(0)
-}
-
-let token;
-
-
-if(tokens[0] === "1") {
-  token = "process.env.BOT_TOKENN"
-} else if(tokens[0] === "2") {
-  token = "process.env.BOT_TOKEN" 
-} /* else  if(tokens[0] === "3") {
-  token = "token"
-}
-*/
-client.login(token);
+client.login(process.env.BOT_TOKENN);
